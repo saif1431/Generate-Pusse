@@ -39,8 +39,8 @@
         n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
       }(window, document);
     </script>
-    <link href="images/fav.jpg" rel="shortcut icon" type="image/x-icon">
-    <link href="images/fav.jpg" rel="apple-touch-icon">
+    <link href="../images/fav.jpg" rel="shortcut icon" type="image/x-icon">
+    <link href="../images/fav.jpg" rel="apple-touch-icon">
     <style type="text/css">
       .hero-heading {
         -webkit-text-stroke: 8px #1f2024;
@@ -309,113 +309,21 @@
                 <canvas id="downloadCanvas" style="display: none;"></canvas>
                 <img id="generatedImage" src="" alt="Generated Image" style="width: 100%; height: 100%; object-fit: contain; display: none;">
                 <!-- Keep the existing img elements, but they will be hidden most of the time -->
-                <img id="body" src="" alt="Body" class="hidden">
+                <img id="BGG" src="" alt="BGG" class="hidden">
+                <img id="Body" src="" alt="Body" class="hidden">
                 <img id="shirt" src="" alt="Shirt" class="hidden">
                 <img id="eyes" src="" alt="Eyes" class="hidden">
                 <img id="mouth" src="" alt="Mouth" class="hidden">
             </div>
             <div class="cta">
                 <a id="generateLink" class="btn square_btn generate"> generate </a>
-              
-<img id="image2" src="/images/downloaded_image (11).png" style="display: none;" />
-<img id="image3" src="/images/downloaded_image (12).png" style="display: none;" />
-<img id="image4" src="/images/downloaded_image (14).png" style="display: none;" />
-<img id="image5" src="/images/downloaded_image (15).png" style="display: none;" />
-<img id="image6" src="/images/downloaded_image (16).png" style="display: none;" />
-<img id="image7" src="/images/downloaded_image (17).png" style="display: none;" />
 
                 <a id="downloadLink"  class="btn square_btn download">Download</a>
             </div>
         </div>
 
     </main>
-     <script src="/js/script.js"></script>
-  <script>
- const images = [
-        document.getElementById('image2').src,
-        document.getElementById('image3').src,
-        document.getElementById('image4').src,
-        document.getElementById('image5').src,
-        document.getElementById('image6').src,
-        document.getElementById('image7').src
-    ];
+     <script src="./js/script.js"></script>
 
-    let currentIndex = 0;
-
-    function generateImage() {
-        // Get a random index
-        const randomIndex = Math.floor(Math.random() * images.length);
-        
-        // Get the generated image element
-        const generatedImg = document.getElementById('generatedImage');
-        
-        // Set the source of the generated image
-        generatedImg.src = images[randomIndex];
-        
-        // Hide the layered images
-        document.getElementById('body').style.display = 'none';
-        document.getElementById('shirt').style.display = 'none';
-        document.getElementById('eyes').style.display = 'none';
-        document.getElementById('mouth').style.display = 'none';
-        
-        // Show the generated image
-        generatedImg.style.display = 'block';
-    }
-
-    // Attach event listener to the generate button
-    document.querySelector('#generateLink').addEventListener('click', generateImage);
-
-    function downloadImage() {
-        const canvas = document.getElementById('downloadCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        const generatedImg = document.getElementById('generatedImage');
-        
-        // Set canvas size based on the generated image
-        canvas.width = generatedImg.naturalWidth;
-        canvas.height = generatedImg.naturalHeight;
-        
-        // Draw the generated image onto the canvas
-        ctx.drawImage(generatedImg, 0, 0);
-        
-        // Create a link for downloading the image
-        const link = document.getElementById('downloadLink');
-        link.href = canvas.toDataURL('image/png');
-        link.download = 'generated_image.png';
-    }
-
-    // Attach downloadImage to click event
-    // document.getElementById('downloadLink').addEventListener('click', downloadImage);
-
-
-    function downloadImage() {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-
-    const bodyImg = document.getElementById('body');
-    const shirtImg = document.getElementById('shirt');
-    const eyesImg = document.getElementById('eyes');
-    const mouthImg = document.getElementById('mouth');
-
-    // Set canvas size based on the body image
-    canvas.width = bodyImg.naturalWidth;
-    canvas.height = bodyImg.naturalHeight;
-
-    // Draw each image onto the canvas if it exists
-    ctx.drawImage(bodyImg, 0, 0);
-    if (shirtImg.src) ctx.drawImage(shirtImg, 0, 0);
-    if (eyesImg.src) ctx.drawImage(eyesImg, 0, 0);
-    if (mouthImg.src) ctx.drawImage(mouthImg, 0, 0);
-
-    // Create a link for downloading the image
-    const link = document.getElementById('downloadLink');
-    link.href = canvas.toDataURL('image/png'); // Get the canvas data as a PNG
-    link.download = 'downloaded_image.png'; // Set the default name of the downloaded file
-}
-
-// Attach downloadImage to click event
-document.getElementById('downloadLink').addEventListener('click', downloadImage);
-
-  </script>
 </body>
 </html>
