@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    max-height: fit-content;
+    overflow: hidden;
+    /* border: 1px solid red; */
+}
+
+body{
+    width: 100vw;
+    overflow: hidden !important;
+    background: #b493dc;
+    max-height: fit-content;
+}
+:root{
+    --col-title:#fd464c; 
+    --col-subtitle: #f7797d;
+    --col-shadow: #000000f2 0px 0px 0px 0px;
+    --fs-l: 2rem;
+    --fs-m: 1.5rem;
+    --fs-s: 1rem;
+}
+
+a, p, label, input, h1, h2, h3, h4, h5, button, span{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+}
+
+a, p, label, input{
+    color: #fff;
+}
+
+input{
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+    overflow: hidden;
+}
+#menubar{
+    display: none;
+}
+#canvas {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    background-size: contain;  /* Ensures the background image fits within the canvas */
+    background-repeat: no-repeat;  /* Prevents the background from repeating */
+    background-position: center;  /* Centers the background image */
+    background-color: #f5f5f5;  /* Fallback color if the image doesn't load */
+}
+.cta a{
+    text-decoration: none;
+    padding-top: 1vw;
+}
+
+#canvas img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;  /* Adjust based on your design */
+}
+
+.hidden {
+    display: none;
+}
+
+
+body .disp-none{
+    display: none;
+}
+
+.btn{
+    border: none;
+    font-size: var(--fs-s);
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.square_btn{
+    min-width: 15%;
+    max-width: 80%;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(204 182 231);
+    box-shadow: var(--col-shadow);
+    text-transform: uppercase;
+}
+
+.circle_btn{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: rgb(180 147 220);
+    box-shadow: var(--col-shadow);
+}
+
+.container{
+    margin: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    /* display: grid; */
+    /* grid-template-columns: 1fr .5fr; */
+    align-items: center;
+    gap: 1rem;
+}
+
+.controller{
+    border-radius: 1rem 0 0 1rem;
+    text-align: left;
+    max-height: 90vh;
+    overflow-y: scroll;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    color: #ffffff;
+    padding: 1rem 1rem 0 1rem;
+    text-transform: uppercase;
+}
+
+.wrapper{
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+    width: 100%;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 0 .5rem 0;
+    margin: 0 0 1rem 0;
+    border-bottom: 2px solid #b493dc;
+}
+
+.sub_title{
+    color: #ffffff;
+}
+
+.list{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* overflow-x: scroll; */
+    justify-content: flex-start;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.list_item{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 120px;
+    height: 120px;
+    background: rgb(204 182 231);
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.list_item .btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+}
+
+.notes{
+    font-size: 0.85rem;
+    position: absolute;
+    top: 25px;
+    color: rgb(254, 254, 254);
+    text-align: center;
+}
+
+.cta{
+   text-align: center;
+   max-width: 400px;
+   padding-top: 4vw;
+}
+
+.generate, .download{
+    margin: 1rem;
+}
+
+.canvas_container{
+    align-self: flex-start;
+    padding: 2rem;
+}
+
+#canvas{
+    border: 2px solid #fff;
+    border-radius: 1rem;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.selected_item{
+    border: 5px solid #fff;
+}
+
+.thumbnail{
+    width: 100%;
+    background-size: cover;
+}
+#background, #bodyImg, #shadesImg, #clothesImg, #mouthImg{
+    display: flex;
+    align-items: center;
+    gap: .5vw;
+}
+@media screen and (width > 300px) and (width < 768px){
+    .container{
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        width: 100%;
+        /* height: 40vh; */
+        margin: 0 auto;
+    }
+    #canvas {
+ width: 360px;
+ height: 355px;
+ margin: 2vw;
+    }
+    .canvas_container{
+padding: 0vw;
+    }
+    .controller{
+        background-color: rgb(204 182 231);
+        height: fit-content;
+        width: 90%;
+        flex-direction: row;
+        padding: 0vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+        margin-top: 48vw;
+
+        /* overflow-x: scroll; */
+    }
+    
+    .circle_btn{
+        display: none;
+    }
+    .header{
+        padding: 0;
+    
+    }
+    .wrapper{
+        padding: 5.5vw;
+        /* overflow-x: scroll; */
+    }
+    .header h2{
+        font-size: 5vw;
+        background-color: rgb(204 182 231);
+        padding: 2vw 1vw;
+    }
+    #menubar{
+        display: block;
+        padding: 2vw;
+        font-size: 7vw;
+        background-color: #fff;
+        width: fit-content;
+        margin: 2vw;
+        border-radius: 10px;
+    }
+    #menubar:hover{
+        background-color: rgb(204 182 231);
+    }
+    .list{
+        position: absolute;
+        top: 45%;
+        z-index: 99;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    #backgroundList {
+        transform: translateX(-100%); /* Initially hidden by translating off-screen */
+        transition: transform 0.3s ease-in-out; /* Smooth transition */
+      }
+      
+      #backgroundList.active {
+        transform: translateX(0); /* Bring it back to view */
+      }
+    #bodyList {
+        transform: translateX(-300%); /* Initially hidden by translating off-screen */
+        transition: transform 0.3s ease-in-out; /* Smooth transition */
+      }
+      #bodyList.active {
+        transform: translateX(0); /* Bring it back to view */
+      }
+    #shadesList {
+        display: flex;
+        flex-direction: row;
+        left: 3%;
+        transform: translateX(150%); /* Initially hidden by translating off-screen */
+        transition: transform 0.3s ease-in-out; /* Smooth transition */
+      }
+      #shadesList .list_item{
+        width: 15vw;
+        height: 15vw;
+      }
+      
+      #shadesList.active {
+        transform: translateX(0); /* Bring it back to view */
+      }
+
+      #clothesList {
+        transform: translateX(150%); /* Initially hidden by translating off-screen */
+        transition: transform 0.3s ease-in-out;
+      }
+      #clothesList.active {
+        transform: translateX(-40%); /* Bring it back to view */
+      }
+
+      #mouthList {
+        display: flex;
+        flex-direction: row;
+        left: 3%;
+        transform: translateX(150%); /* Initially hidden by translating off-screen */
+        transition: transform 0.3s ease-in-out; /* Smooth transition */
+      }
+      #mouthList .list_item{
+        width: 15vw;
+        height: 15vw;
+      }
+      #shadesiconText{
+        display: none;
+      }
+      #mouthList.active {
+        transform: translateX(0); /* Bring it back to view */
+      }
+      /* Add some icon styles if you're using a font icon like Font Awesome */
+      .close-icon::before {
+        content: '\00d7'; /* Unicode for 'X' or close symbol */
+        font-size: 25px;
+        color: red;
+        padding: .2vw 5vw;
+        font-weight: bold;
+      }
+      #iconText{
+        display: none;
+      }
+      #bodyiconText{
+        display: none;
+      }
+      #clothesiconText{
+        display: none;
+      }
+      #mouthiconText{
+        display: none;
+      }
+     #background i{
+font-size: 8vw;
+}
+     #clothesImg i{
+font-size: 8vw;
+}
+     #mouthImg i{
+font-size: 8vw;
+}
+     #shadesImg i{
+font-size: 8vw;
+}
+     #bodyImg i{
+font-size: 8vw;
+      
+     }
+    .list_item{
+        width: 25vw;
+        height: 25vw;
+    }
+}
